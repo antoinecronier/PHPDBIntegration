@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /* DBZ PDO CONNEXION */
 
@@ -32,8 +32,4 @@ class Pdo_Connexion {
 
 }
 
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> 44ed51f38296ce9c8e5329540e12408ea7b1882c

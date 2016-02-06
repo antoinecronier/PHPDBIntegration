@@ -28,3 +28,5 @@ $OUTPUT .= View::MenuTable ($MODEL->Name_DB(), $MODEL->List_Table());
 
 // output echo screen rendering 
 View::HTML($CONFIG['MODULE_NAME'], $OUTPUT);
+
+?>
