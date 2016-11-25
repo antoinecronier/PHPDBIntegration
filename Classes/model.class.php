@@ -23,6 +23,14 @@ class Model {
     return $RES->fetchAll();
   }
   
+  // list table
+  public function List_Table_Attributes ($table) {
+    $SQL = "describe ";
+    $SQL.= $table;
+    $RES = $this->PDO->prepare($SQL);
+    $RES->execute();
+    return $RES->fetchAll();
+  }
 }
 
 ?>

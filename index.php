@@ -18,15 +18,19 @@ $MODEL = new Model ($PDO->CNX);
 require_once("Classes/view.class.php");
 
 // html output increment
-$OUTPUT = NULL;
+$TABLES = NULL;
 
 // set the menu based on tables
-$OUTPUT .= View::MenuTable ($MODEL->Name_DB(), $MODEL->List_Table());
+$TABLES .= View::MenuTable ($MODEL->Name_DB(), $MODEL->List_Table());
 
-
-
+$T = $_GET['T'];
+$TABLE_DESCRIPTION = NULL;
+$TABLE_DESCRIPTION .= View::TableDescription($T, $MODEL->List_Table_Attributes($T));
 
 // output echo screen rendering 
-View::HTML($CONFIG['MODULE_NAME'], $OUTPUT);
+if ($TABLE_DESCRIPTION != NULL) {
+	$TABLES .= "<br/>" . $TABLE_DESCRIPTION;
+}
+View::HTML($CONFIG['MODULE_NAME'], $TABLES);// + $TABLE_DESCRIPTION
 
 ?>
