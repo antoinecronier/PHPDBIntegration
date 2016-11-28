@@ -51,7 +51,7 @@ class Model {
   }
 
   // insert data
-  public function Delete_Table_Datas ($table) {
+  public function Insert_Table_Data ($table) {
       $SQL = "DELETE FROM ";
       $SQL.= $table;
       $RES = $this->PDO->prepare($SQL);

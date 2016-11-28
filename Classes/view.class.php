@@ -19,7 +19,7 @@
       return $menu;
     }
 
-    public static function TableDescription ($table_name, $array_table) {
+    public static function TableDescription ($table_name, $array_table, $array_datas) {
       $menu = "<table>Table : ".$table_name;
 
       foreach ($array_table as $K => $TABLE) {
@@ -28,9 +28,12 @@
 
       $menu .= "</table>";
 
+      $menu .= "<br/>";
+
       $form = "<form action='action.php' method='post'>";
-      foreach ($array_table as $K => $TABLE) {
-        $form .= "<p>Votre nom : <input type='text' name="+$TABLE[0]+" /></p>";
+      $form .= "<table>";
+      foreach ($array_datas as $K => $TABLE) {
+        $form .= "<tr> <td><p>Votre nom : <input type='text' name="+$TABLE[0]+" /></p></td> </tr>";
       }
       $form .= "<p><input type='submit' value='OK'></p>";
       $form .= "</form>";

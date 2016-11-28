@@ -28,8 +28,8 @@ $TABLE_DESCRIPTION = NULL;
 
 $TABLE_DATA = NULL;
 
-$TABLE_DESCRIPTION .= View::TableDescription($T, $MODEL->List_Table_Attributes($T));
-$TABLE_DATA .= View::TableDescription($T, $MODEL->List_Table_Datas($T));
+$TABLE_DESCRIPTION .= View::TableDescription($T, $MODEL->List_Table_Attributes($T),$MODEL->List_Table_Attributes($T));
+//$TABLE_DATA .= View::TableDescription($T, $MODEL->List_Table_Datas($T));
 
 // output echo screen rendering
 if ($TABLE_DESCRIPTION != NULL) {
