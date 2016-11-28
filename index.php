@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /* DBZ FRONTAL CONTROLLER
 ** MVC CMS for database management */
@@ -25,12 +25,18 @@ $TABLES .= View::MenuTable ($MODEL->Name_DB(), $MODEL->List_Table());
 
 $T = $_GET['T'];
 $TABLE_DESCRIPTION = NULL;
-$TABLE_DESCRIPTION .= View::TableDescription($T, $MODEL->List_Table_Attributes($T));
 
-// output echo screen rendering 
+$TABLE_DATA = NULL;
+
+$TABLE_DESCRIPTION .= View::TableDescription($T, $MODEL->List_Table_Attributes($T));
+$TABLE_DATA .= View::TableDescription($T, $MODEL->List_Table_Datas($T));
+
+// output echo screen rendering
 if ($TABLE_DESCRIPTION != NULL) {
 	$TABLES .= "<br/>" . $TABLE_DESCRIPTION;
+	$TABLES .= "<br/>" . $TABLE_DATA;
 }
+
 View::HTML($CONFIG['MODULE_NAME'], $TABLES);// + $TABLE_DESCRIPTION
 
 ?>
