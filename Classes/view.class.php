@@ -37,7 +37,7 @@ class View
         foreach ($array_datas as $key => $table) {
             $fieldName = $table['Field'];
 
-            if ($fieldName != 'id') {
+            if ($table['Key'] != 'PRI') {
                 $form .= "<tr> <td><p>Fill " . $table['Field']
                 . ' <input required="required" type="text" name=' . $table['Field'] .
                          " /></p></td> </tr>";
