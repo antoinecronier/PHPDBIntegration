@@ -97,10 +97,10 @@ class Model
         $success = $RES->execute();
 
         if ($success == false) {
-            // TODO Add error code.
+            return false;
         }
 
-        return $RES->fetchAll();
+        return true;
     }
 }
 
