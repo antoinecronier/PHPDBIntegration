@@ -20,7 +20,7 @@
     }
 
     public static function TableDescription ($table_name, $array_table, $array_datas) {
-      $menu = "<table>Table : ".$table_name;
+      $menu = "<table class='table table-bordered table-hover table-striped'>";
 
       foreach ($array_table as $K => $TABLE) {
         $menu .= "<tr> <td> " . strtoupper($TABLE[0]) . "</td> </tr>";
@@ -43,7 +43,7 @@
 
     public static function TableDatas ($table_name, $table_columns, $array_datas) {
         $menu = "";
-        $menu .= "<table>";
+        $menu .= "<table class='table table-bordered table-hover table-striped'>";
 
         $menu .= "<tr>";
         foreach ($table_columns as $K => $DATA) {
@@ -66,11 +66,13 @@
 
     // html final rendering
     public static function HTML ($title, $contener) {
+    $bootstrap = include 'Fichiers/theme/bootstrap.work';
       echo "<html>
       <head>
         <title>".$title."</title>
-        <link rel='stylesheet' type='text/css' href='Fichiers/css/style.css' />
-      </head>
+        <link rel='stylesheet' type='text/css' href='Fichiers/css/style.css' />"
+        . $bootstrap .
+      "</head>
       <body>
         <img src='Fichiers/images/logo.jpg' /><br /><hr />
         </hr>".$contener."
