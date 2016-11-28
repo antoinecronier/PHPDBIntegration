@@ -17,6 +17,11 @@ $MODEL = new Model ($PDO->CNX);
 // view class
 require_once("Classes/view.class.php");
 
+// Process action forms.
+if (isset($_POST['submit-insert']) && ! empty($_POST['submit-insert'])) {
+    $MODEL->Insert_Table_Data($_POST);
+}
+
 // html output increment
 $TABLES = NULL;
 
@@ -40,5 +45,3 @@ if ($TABLE_DESCRIPTION != NULL) {
 }
 
 View::HTML($CONFIG['MODULE_NAME'], $TABLES);// + $TABLE_DESCRIPTION
-
-?>
