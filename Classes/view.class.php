@@ -23,7 +23,7 @@
       $menu = "<table>Table : ".$table_name;
 
       foreach ($array_table as $K => $TABLE) {
-        $menu .= "<tr> <td> <a href='?T=".$TABLE[0]."'>[ ".strtoupper($TABLE[0])." ]</a> </td> </tr>";
+        $menu .= "<tr> <td> " . strtoupper($TABLE[0]) . "</td> </tr>";
       }
 
       $menu .= "</table>";
@@ -41,11 +41,22 @@
       return $menu . $form;
     }
 
-    public static function TableDatas ($table_name, $array_datas) {
+    public static function TableDatas ($table_name, $table_columns, $array_datas) {
         $menu = "";
+        $menu .= "<table>";
+
+        $menu .= "<tr>";
+        foreach ($table_columns as $K => $DATA) {
+        	$menu .= "<th>" .strtolower($DATA[0])."</th>";
+        }
+        $menu .= "</tr>";
 
         foreach ($array_datas as $K => $DATA) {
-            $menu .= "<tr> <td> <a href='?T=".$DATA[0]."'>[ ".strtolower($DATA[0])." ]</a> </td> </tr>";
+        	$menu .= "<tr>";
+        	for ($i=0;$i<count($DATA)/2;$i ++){
+        		$menu .= "<td>" .strtolower($DATA[$i])."</td>";
+        	}
+            $menu .= "</tr>";
         }
 
         $menu .= "</table>";
