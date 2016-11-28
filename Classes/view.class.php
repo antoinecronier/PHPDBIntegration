@@ -1,22 +1,24 @@
 <?php
 
-  /* DBZ VIEW */
+/* DBZ VIEW */
+class View
+{
 
-  class View {
-
-    public function __construct () { }
+    public function __construct()
+    {}
 
     // menu list of table link
-    public static function MenuTable ($db_name, $array_table) {
-      $menu = "<table>DB : ".$db_name;
+    public static function MenuTable($db_name, $array_table)
+    {
+        $menu = "<table>DB : " . $db_name;
 
-      foreach ($array_table as $K => $TABLE) {
-        $menu .= "<tr> <td> <a href='?T=".$TABLE[0]."'>[ ".strtoupper($TABLE[0])." ]</a> </td> </tr>";
-      }
+        foreach ($array_table as $K => $TABLE) {
+            $menu .= "<tr> <td> <a href='?T=" . $TABLE[0] . "'>[ " . strtoupper($TABLE[0]) . " ]</a> </td> </tr>";
+        }
 
-      $menu .= "</table>";
+        $menu .= "</table>";
 
-      return $menu;
+        return $menu;
     }
 
     public static function TableDescription ($table_name, $array_table, $array_datas) {
@@ -26,19 +28,28 @@
         $menu .= "<tr> <td> " . strtoupper($TABLE[0]) . "</td> </tr>";
       }
 
-      $menu .= "</table>";
+        $menu .= "</table>";
 
-      $menu .= "<br/>";
+        $menu .= "<br/>";
 
-      $form = "<form action='action.php' method='post'>";
-      $form .= "<table>";
-      foreach ($array_datas as $K => $TABLE) {
-        $form .= "<tr> <td><p>Votre nom : <input type='text' name="+$TABLE[0]+" /></p></td> </tr>";
-      }
-      $form .= "<p><input type='submit' value='OK'></p>";
-      $form .= "</form>";
+        $form = '<form id="insert" name="insert" action="index.php" method="post">';
+        $form .= "<table>";
+        foreach ($array_datas as $key => $table) {
+            $fieldName = $table['Field'];
 
-      return $menu . $form;
+            if ($fieldName != 'id') {
+                $form .= "<tr> <td><p>Fill " . $table['Field']
+                . ' <input required="required" type="text" name=' . $table['Field'] .
+                         " /></p></td> </tr>";
+            }
+        }
+        $form .= '<p>'
+                . "<input id='submit-insert' name='submit-insert' type='submit' value='OK'>"
+                . '<input type="hidden" name="action-table-name" id="action-table-name" value="' . $table_name . '" />'
+                . '</p>';
+        $form .= "</form>";
+
+        return $menu . $form;
     }
 
     public static function TableDatas ($table_name, $table_columns, $array_datas) {
@@ -75,12 +86,8 @@
       "</head>
       <body>
         <img src='Fichiers/images/logo.jpg' /><br /><hr />
-        </hr>".$contener."
+        </hr>" . $contener . "
       </body>
       </html>";
     }
-
-  }
-
-?>
-
+}
